@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reactivo</title>
+</head>
+<body>
+  <div id="count">
+    count is 5
+    <button id="increment">incrementar</button>
+    <button id="decrement">decrementar</button>
+  </div>
+  <script>
+    let count = 5;
+    const div = document.getElementById('count');
+    const incrementBTN = document.getElementById('increment');
+    const decrementBTN = document.getElementById('decrement');
+    incrementBTN.onclick = () =>{
+      count++;
+      div.childNodes[0].textContent = `Count is: ${count}`;
+    }
+    decrementBTN.onclick = () =>{
+      count--;
+      div.childNodes[0].textContent = `Count is: ${count}`;
+    }
+  </script>
+</body>
+</html>
