@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacs</title>
+</head>
+<body>
+  <button type="button" class="see">Get contacs</button>
+  <pre>
+    <div class="contacs">
+
+    </div>
+  </pre>
+  <script>
+    const btn = document.querySelector('.see');
+    const view = document.querySelector('.contacs');
+    btn.onclick = () => {
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => response.json())
+        .catch(error => console.error(error))
+        .then(data => {
+          let HTML = data.map(user => {
+            return `${user.name} <br> ${user.email} <br>`;
+          });
+          view.innerHTML = HTML.join('');
+        });
+    }
+  </script>
+</body>
+</html>
