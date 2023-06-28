@@ -3,27 +3,25 @@
 <div id="app"></div>
 
 <script>
-  const { createApp, reactive } = Vue;
+  const { createApp, ref } = Vue;
   const Counter = {
     template: `
     <div>
-      Count is: {{ data.count }}
+      Count is: {{ count }}
       <button v-on:click="increment">Increment</button>
       <button v-on:click="decrement">Increment</button>
     </div>
     `,
     setup() {
-      const data = reactive({
-        count: 5
-      });
-      console.log(data);
+      let count = ref(5);//count es un proxy
+      //console.log(data);
       const increment = () => {
-        data.count++;
+        count.value += 1;
       };
       const decrement = () => {
-        data.count--;
+        count.value -= 1;
       };
-      return { data, increment, decrement };
+      return { count, increment, decrement };
     }
   };
   const App = {
